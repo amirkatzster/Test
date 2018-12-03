@@ -35,6 +35,8 @@ spec:
             - --collector.filesystem.ignored-mount-points
             - '"^/(sys|proc|dev|host|etc)($|/)"'
           name: node-exporter
+          labels:
+             name: node-exporter
           volumeMounts:
             - name: dev
               mountPath: /host/dev
