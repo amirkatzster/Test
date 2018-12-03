@@ -10,10 +10,11 @@ metadata:
     addonmanager.kubernetes.io/mode: Reconcile
     kubernetes.io/name: "NodeExporter"
 spec:
+  type: LoadBalancer
   ports:
-    - name: metrics
+    - name: prom
       port: 9100
       protocol: TCP
       targetPort: 9100
   selector:
-    k8s-app: node-exporter 
+    name: node-exporter 
