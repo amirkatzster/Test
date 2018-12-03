@@ -35,3 +35,6 @@ k patch deployment prometheus-deployment -p "{\"spec\":{\"template\":{\"metadata
 
 Good stuff
 #  k replace --force -f https://raw.githubusercontent.com/yanivomc/monitoring-stack/master/prometheus/k8s-setup/prometheus-deployment.yml
+
+ELK
+https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover.html
