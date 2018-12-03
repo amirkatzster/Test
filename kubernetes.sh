@@ -20,6 +20,17 @@ k describe svc prometheus-example-service
 k create configmap prom.yml --from-file=prometheus.yml -o yaml --dry-run | kubectl apply -f -
 k patch deployment prometheus-deployment -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
 
+k create -f https://raw.githubusercontent.com/yanivomc/monitoring-stack/master/prometheus/k8s-setup/redis-sidecar-prometheus.yml
+# add redis job
+vi prometheus.yml
+- job_name: 'redis'
+    static_configs:
+      - targets: ['redis:9121']
+
+k create configmap prom.yml --from-file=prometheus.yml -o yaml --dry-run | kubectl apply -f -
+k patch deployment prometheus-deployment -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
+
+
 
 
 Good stuff
